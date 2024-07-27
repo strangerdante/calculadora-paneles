@@ -1,7 +1,7 @@
 # Calculadora de Paneles Solares
 
 Esta aplicación web ayuda a los usuarios a calcular la energía generada por paneles solares y a determinar cuántos paneles se necesitan para satisfacer sus necesidades energéticas diarias. Está desarrollada con Astro.js, Vue.js y Tailwind CSS.
-
+https://calculadorapaneles.netlify.app
 ## Características Principales
 
 1. **Ingreso de Datos de Electrodomésticos:**
