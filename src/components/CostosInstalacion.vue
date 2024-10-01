@@ -138,12 +138,7 @@ export default {
     },
     costoMantenimiento() {
       // 2% de (costo de paneles + inversor + accesorios y estructura)
-      return (
-        (this.costosPaneles +
-          this.costoInversor +
-          this.costoAccesoriosEstructura) *
-        0.02
-      );
+      return (this.costosPaneles + this.costoInversor) * 0.02;
     },
   },
   mounted() {
@@ -170,7 +165,7 @@ export default {
       });
       tippy(this.$refs.tooltipMantenimiento, {
         content:
-          "El costo de mantenimiento anual se estima en un 2% del costo total de los paneles, el inversor, y los accesorios y estructura.",
+          "El costo de mantenimiento anual se estima en un 2% del costo total de los paneles y el inversor",
       });
     },
   },
