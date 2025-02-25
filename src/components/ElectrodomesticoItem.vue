@@ -2,6 +2,14 @@
   <div class="bg-gray-100 p-4 rounded-md shadow">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
+        <div class="w-8 h-8 mr-3 text-blue-500">
+          <TvIcon v-if="electrodomestico.nombre === 'Televisor'" class="w-full h-full" />
+          <Cog6ToothIcon v-if="electrodomestico.nombre === 'Licuadora'" class="w-full h-full" />
+          <LightBulbIcon v-if="electrodomestico.nombre === 'Bombilla'" class="w-full h-full" />
+          <WrenchScrewdriverIcon v-if="electrodomestico.nombre === 'Lavadora'" class="w-full h-full" />
+          <ComputerDesktopIcon v-if="electrodomestico.nombre === 'Computador'" class="w-full h-full" />
+          <SparklesIcon v-if="electrodomestico.nombre === 'Brilladora'" class="w-full h-full" />
+        </div>
         <h3 class="text-lg font-medium text-gray-800">
           {{ electrodomestico.nombre }}
         </h3>
@@ -111,7 +119,24 @@
 </template>
 
 <script>
+import { 
+  TvIcon, 
+  Cog6ToothIcon, 
+  LightBulbIcon, 
+  WrenchScrewdriverIcon,
+  ComputerDesktopIcon,
+  SparklesIcon
+} from '@heroicons/vue/24/outline'
+
 export default {
+  components: {
+    TvIcon,
+    Cog6ToothIcon,
+    LightBulbIcon,
+    WrenchScrewdriverIcon,
+    ComputerDesktopIcon,
+    SparklesIcon
+  },
   props: {
     electrodomestico: Object,
     index: Number,
