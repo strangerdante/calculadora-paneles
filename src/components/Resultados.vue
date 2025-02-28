@@ -302,12 +302,39 @@ export default {
       // Calcular el área de un panel
       const areaPorPanel = dimensiones.ancho * dimensiones.alto;
       
-      // Ajustar el área según la potencia del panel
-      // Los paneles de mayor potencia suelen ser más grandes
-      const factorPotencia = this.solarPanelOutput / 300; // 300W como referencia estándar
+      // Usar la eficiencia real del panel para calcular el área necesaria
+      // La fórmula básica es: Área = Potencia / (Irradiancia * Eficiencia)
+      // Donde la irradiancia estándar es 1000 W/m²
+      
+      // Eficiencias típicas por tipo de panel (como referencia)
+      const eficienciasTipicas = {
+        monocristalino: 20, // 18-22%
+        polycristalino: 16, // 15-17%
+        peliculaDelgada: 11  // 10-12%
+      };
+      
+      // Usar la eficiencia proporcionada por el usuario, o la típica si está fuera de rango
+      let eficienciaUsada = this.eficienciaPanel;
+      
+      // Verificar si la eficiencia está dentro de rangos razonables para el tipo de panel
+      const eficienciaTipica = eficienciasTipicas[this.tipoPanel] || 15;
+      if (eficienciaUsada < 5 || eficienciaUsada > 25) {
+        eficienciaUsada = eficienciaTipica;
+      }
+      
+      // Calcular el área necesaria para generar la potencia requerida
+      // Área (m²) = Potencia (W) / (1000 W/m² * eficiencia/100)
+      const areaNecesaria = this.solarPanelOutput / (1000 * (eficienciaUsada/100));
+      
+      // Ajustar el área según el tipo de panel (factor de forma, espaciado, etc.)
+      let factorAjuste = 1.1; // 10% adicional para marcos, espaciado, etc.
+      
+      if (this.tipoPanel === 'peliculaDelgada') {
+        factorAjuste = 1.2; // Película delgada suele necesitar más espacio de instalación
+      }
       
       // Calcular el área total
-      return this.panelesSolaresRequeridos * areaPorPanel * factorPotencia;
+      return this.panelesSolaresRequeridos * areaNecesaria * factorAjuste;
     },
     ahorroEstimado() {
       const tarifaKwh = this.estratosRates[this.selectedEstrato];
