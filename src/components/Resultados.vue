@@ -26,6 +26,29 @@
             <span class="text-sm sm:text-base text-gray-700">Consumo anual total:</span>
             <span class="text-green-600 font-bold">{{ consumoAnualTotal.toFixed(2) }} kWh</span>
           </div>
+          
+          <!-- Tabla de Horas de Consumo -->
+          <div class="mt-4">
+            <h4 class="text-md font-semibold text-gray-700 mb-2">Horas de Consumo Energético</h4>
+            <div class="overflow-x-auto">
+              <table class="min-w-full bg-green-50 rounded-lg overflow-hidden">
+                <thead>
+                  <tr class="bg-green-100">
+                    <th class="py-2 px-3 text-center text-sm font-medium text-gray-700 border-b">Diario</th>
+                    <th class="py-2 px-3 text-center text-sm font-medium text-gray-700 border-b">Mensual</th>
+                    <th class="py-2 px-3 text-center text-sm font-medium text-gray-700 border-b">Anual</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-3 px-4 text-center font-bold text-green-600">{{ horasConsumoDiario.toFixed(1) }} h</td>
+                    <td class="py-3 px-4 text-center font-bold text-green-600">{{ horasConsumoMensual.toFixed(1) }} h</td>
+                    <td class="py-3 px-4 text-center font-bold text-green-600">{{ horasConsumoAnual.toFixed(1) }} h</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -172,6 +195,10 @@ export default {
     eficienciaPanel: Number,
     tipoPanel: String,
     generacionEnergiaAnual: Number,
+    horasDiarias: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {
@@ -237,6 +264,16 @@ export default {
     },
     consumoAnualTotal() {
       return this.consumoMensualTotal * 12;
+    },
+    // Propiedades computadas para las horas de consumo
+    horasConsumoDiario() {
+      return this.horasDiarias;
+    },
+    horasConsumoMensual() {
+      return this.horasDiarias * 30;
+    },
+    horasConsumoAnual() {
+      return this.horasDiarias * 365;
     },
     ahorroEstimado() {
       const tarifaKwh = this.estratosRates[this.selectedEstrato];

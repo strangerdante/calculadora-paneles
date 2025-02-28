@@ -53,6 +53,7 @@
         :eficienciaPanel="eficienciaPanel"
         :tipoPanel="tipoPanel"
         :generacionEnergiaAnual="generacionEnergiaAnual"
+        :horasDiarias="horasDiariasTotal"
       />
     </div>
   </div>
@@ -89,6 +90,7 @@ export default {
       tipoPanel: "",
       horasSolDia: 0,
       generacionEnergiaAnual: 0,
+      horasDiariasTotal: 0,
     };
   },
   computed: {
@@ -127,6 +129,12 @@ export default {
               electrodomestico.cantidad) /
               1000
           );
+        },
+        0
+      );
+      this.horasDiariasTotal = this.electrodomesticos.reduce(
+        (total, electrodomestico) => {
+          return total + (electrodomestico.horasPorDia * electrodomestico.cantidad);
         },
         0
       );
