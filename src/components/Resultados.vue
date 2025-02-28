@@ -77,6 +77,10 @@
             <span class="text-sm sm:text-base text-gray-700">Tipo de panel:</span>
             <span class="text-blue-600 font-bold">{{ tipoPanelDisplay }}</span>
           </div>
+          <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+            <span class="text-sm sm:text-base text-gray-700">Tamaño de área de paneles:</span>
+            <span class="text-blue-600 font-bold">{{ areaPaneles.toFixed(2) }} m²</span>
+          </div>
         </div>
       </div>
 
@@ -212,6 +216,12 @@ export default {
         "4": 1021.5, // Tarifa aproximada estrato 4
         "5": 1225.8, // Tarifa aproximada estrato 5
         "6": 1470.9, // Tarifa aproximada estrato 6 (20% más que estrato 5)
+      },
+      // Dimensiones típicas de paneles solares según tipo (en metros)
+      dimensionesPaneles: {
+        monocristalino: { ancho: 1.0, alto: 1.7 }, // Típicamente más eficientes, menor área
+        polycristalino: { ancho: 1.0, alto: 1.65 }, // Ligeramente más grandes que los monocristalinos
+        peliculaDelgada: { ancho: 1.2, alto: 2.0 }  // Generalmente más grandes por su menor eficiencia
       }
     };
   },
@@ -274,6 +284,30 @@ export default {
     },
     horasConsumoAnual() {
       return this.horasDiarias * 365;
+    },
+    areaPaneles() {
+      // Si no hay tipo de panel seleccionado o no hay paneles requeridos, retornar 0
+      if (!this.tipoPanel || !this.panelesSolaresRequeridos) {
+        return 0;
+      }
+      
+      // Obtener las dimensiones según el tipo de panel
+      const dimensiones = this.dimensionesPaneles[this.tipoPanel];
+      
+      // Si no hay dimensiones para este tipo, usar un valor predeterminado
+      if (!dimensiones) {
+        return this.panelesSolaresRequeridos * 1.7; // Valor promedio
+      }
+      
+      // Calcular el área de un panel
+      const areaPorPanel = dimensiones.ancho * dimensiones.alto;
+      
+      // Ajustar el área según la potencia del panel
+      // Los paneles de mayor potencia suelen ser más grandes
+      const factorPotencia = this.solarPanelOutput / 300; // 300W como referencia estándar
+      
+      // Calcular el área total
+      return this.panelesSolaresRequeridos * areaPorPanel * factorPotencia;
     },
     ahorroEstimado() {
       const tarifaKwh = this.estratosRates[this.selectedEstrato];
