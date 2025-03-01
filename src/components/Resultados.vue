@@ -247,7 +247,7 @@
 
     <!-- Sección de Gráficos -->
     <div class="mt-6 sm:mt-8 grid md:grid-cols-2 gap-4 sm:gap-8">
-      <div class="bg-transparent sm:bg-white p-3 sm:p-6 w-full overflow-hidden sm:rounded-lg sm:shadow-md">
+      <div class="bg-transparent sm:bg-white  sm:p-6 w-full overflow-hidden sm:rounded-lg sm:shadow-md">
         <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-4 text-center">
           Comparación de Energía Anual
         </h3>
@@ -259,7 +259,7 @@
           />
         </div>
       </div>
-      <div class="bg-transparent sm:bg-white p-3 sm:p-6 w-full overflow-hidden sm:rounded-lg sm:shadow-md">
+      <div class="bg-transparent sm:bg-white sm:p-6 w-full overflow-hidden sm:rounded-lg sm:shadow-md">
         <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-4 text-center">
           Proyección de Ahorro
         </h3>
