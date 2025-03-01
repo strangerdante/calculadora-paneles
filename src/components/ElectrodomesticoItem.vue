@@ -9,6 +9,7 @@
           <WrenchScrewdriverIcon v-if="electrodomestico.nombre === 'Lavadora'" class="w-full h-full" />
           <ComputerDesktopIcon v-if="electrodomestico.nombre === 'Computador'" class="w-full h-full" />
           <SparklesIcon v-if="electrodomestico.nombre === 'Brilladora'" class="w-full h-full" />
+          <PlusCircleIcon v-if="electrodomestico.nombre === 'Personalizado'" class="w-full h-full" />
         </div>
         <h3 class="text-lg font-medium text-gray-800">
           {{ electrodomestico.nombre }}
@@ -125,7 +126,8 @@ import {
   LightBulbIcon, 
   WrenchScrewdriverIcon,
   ComputerDesktopIcon,
-  SparklesIcon
+  SparklesIcon,
+  PlusCircleIcon
 } from '@heroicons/vue/24/outline'
 
 export default {
@@ -135,7 +137,8 @@ export default {
     LightBulbIcon,
     WrenchScrewdriverIcon,
     ComputerDesktopIcon,
-    SparklesIcon
+    SparklesIcon,
+    PlusCircleIcon
   },
   props: {
     electrodomestico: Object,

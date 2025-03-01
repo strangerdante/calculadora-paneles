@@ -74,11 +74,11 @@ export default {
     return {
       electrodomesticos: [
         { nombre: "Televisor", watts: 175, horasPorDia: 0, cantidad: 0 },
-        { nombre: "Licuadora", watts: 300, horasPorDia: 0, cantidad: 0 },
         { nombre: "Bombilla", watts: 20, horasPorDia: 0, cantidad: 0 },
+        { nombre: "Personalizado", watts: 100, horasPorDia: 0, cantidad: 0 },
+        { nombre: "Licuadora", watts: 300, horasPorDia: 0, cantidad: 0 },
         { nombre: "Lavadora", watts: 350, horasPorDia: 0, cantidad: 0 },
         { nombre: "Computador", watts: 200, horasPorDia: 0, cantidad: 0 },
-        { nombre: "Brilladora", watts: 500, horasPorDia: 0, cantidad: 0 },
       ],
       paginaActual: 1,
       elementosPorPagina: 3,
