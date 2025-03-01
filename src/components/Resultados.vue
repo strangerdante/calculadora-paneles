@@ -14,39 +14,62 @@
           Consumo Energético
         </h3>
         <div class="space-y-3">
-          <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Consumo mensual total:</span>
-            <span class="text-green-600 font-bold">{{ consumoMensualTotal.toFixed(2) }} kWh</span>
+            <span class="text-green-600 font-bold text-lg">{{ consumoMensualTotal.toFixed(2) }} kWh</span>
           </div>
-          <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Consumo diario promedio:</span>
-            <span class="text-green-600 font-bold">{{ consumoDiarioPromedio.toFixed(2) }} kWh</span>
+            <span class="text-green-600 font-bold text-lg">{{ consumoDiarioPromedio.toFixed(2) }} kWh</span>
           </div>
-          <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Consumo anual total:</span>
-            <span class="text-green-600 font-bold">{{ consumoAnualTotal.toFixed(2) }} kWh</span>
+            <span class="text-green-600 font-bold text-lg">{{ consumoAnualTotal.toFixed(2) }} kWh</span>
           </div>
           
-          <!-- Tabla de Horas de Consumo -->
-          <div class="mt-4">
-            <h4 class="text-md font-semibold text-gray-700 mb-2">Horas de Consumo Energético</h4>
-            <div class="overflow-x-auto">
-              <table class="min-w-full bg-green-50 rounded-lg overflow-hidden">
-                <thead>
-                  <tr class="bg-green-100">
-                    <th class="py-2 px-3 text-center text-sm font-medium text-gray-700 border-b">Diario</th>
-                    <th class="py-2 px-3 text-center text-sm font-medium text-gray-700 border-b">Mensual</th>
-                    <th class="py-2 px-3 text-center text-sm font-medium text-gray-700 border-b">Anual</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="py-3 px-4 text-center font-bold text-green-600">{{ horasConsumoDiario.toFixed(1) }} h</td>
-                    <td class="py-3 px-4 text-center font-bold text-green-600">{{ horasConsumoMensual.toFixed(1) }} h</td>
-                    <td class="py-3 px-4 text-center font-bold text-green-600">{{ horasConsumoAnual.toFixed(1) }} h</td>
-                  </tr>
-                </tbody>
-              </table>
+          <!-- Horas de Consumo Energético -->
+          <div class=" pt-8">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-700 mb-4 flex items-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Horas de Consumo Energético
+            </h3>
+            
+            <!-- Consumo Diario -->
+            <div class="flex justify-between items-center p-5 bg-green-50 rounded-lg mb-3">
+              <div>
+                <div class="text-base sm:text-lg text-gray-700 font-medium">Consumo Diario</div>
+                <div class="text-xs sm:text-sm text-gray-500 mt-2">{{ horasConsumoDiario.toFixed(1) }} horas</div>
+              </div>
+              <div class="text-right">
+                <div class="text-green-600 font-bold text-xl">{{ consumoDiarioPromedio.toFixed(2) }} kWh</div>
+                <div class="text-xs sm:text-sm text-green-600 mt-2">{{ (consumoDiarioPromedio / horasConsumoDiario).toFixed(2) }} kWh/h</div>
+              </div>
+            </div>
+            
+            <!-- Consumo Mensual -->
+            <div class="flex justify-between items-center p-5 bg-green-50 rounded-lg mb-3">
+              <div>
+                <div class="text-base sm:text-lg text-gray-700 font-medium">Consumo Mensual</div>
+                <div class="text-xs sm:text-sm text-gray-500 mt-2">{{ horasConsumoMensual.toFixed(1) }} horas</div>
+              </div>
+              <div class="text-right">
+                <div class="text-green-600 font-bold text-xl">{{ consumoMensualTotal.toFixed(2) }} kWh</div>
+                <div class="text-xs sm:text-sm text-green-600 mt-2">{{ (consumoMensualTotal / horasConsumoMensual).toFixed(2) }} kWh/h</div>
+              </div>
+            </div>
+            
+            <!-- Consumo Anual -->
+            <div class="flex justify-between items-center p-5 bg-green-50 rounded-lg">
+              <div>
+                <div class="text-base sm:text-lg text-gray-700 font-medium">Consumo Anual</div>
+                <div class="text-xs sm:text-sm text-gray-500 mt-2">{{ horasConsumoAnual.toFixed(1) }} horas</div>
+              </div>
+              <div class="text-right">
+                <div class="text-green-600 font-bold text-xl">{{ consumoAnualTotal.toFixed(2) }} kWh</div>
+                <div class="text-xs sm:text-sm text-green-600 mt-2">{{ (consumoAnualTotal / horasConsumoAnual).toFixed(2) }} kWh/h</div>
+              </div>
             </div>
           </div>
         </div>
@@ -61,25 +84,110 @@
           Especificaciones del Sistema Solar
         </h3>
         <div class="space-y-3">
-          <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Paneles necesarios:</span>
-            <span class="text-blue-600 font-bold">{{ panelesSolaresRequeridos }}</span>
+            <span class="text-blue-600 font-bold text-lg">{{ panelesSolaresRequeridos }}</span>
           </div>
-          <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Potencia del panel:</span>
-            <span class="text-blue-600 font-bold">{{ solarPanelOutput }} watts</span>
+            <span class="text-blue-600 font-bold text-lg">{{ solarPanelOutput }} watts</span>
           </div>
-          <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Eficiencia:</span>
-            <span class="text-blue-600 font-bold">{{ eficienciaPanel.toFixed(1) }}%</span>
+            <span class="text-blue-600 font-bold text-lg">{{ eficienciaPanel.toFixed(1) }}%</span>
           </div>
-          <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Tipo de panel:</span>
-            <span class="text-blue-600 font-bold">{{ tipoPanelDisplay }}</span>
+            <span class="text-blue-600 font-bold text-lg">{{ tipoPanelDisplay }}</span>
           </div>
-          <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+          <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
             <span class="text-sm sm:text-base text-gray-700">Tamaño de área de paneles:</span>
-            <span class="text-blue-600 font-bold">{{ areaPaneles.toFixed(2) }} m²</span>
+            <span class="text-blue-600 font-bold text-lg flex items-center">
+              {{ areaPaneles.toFixed(2) }} m²
+              <span
+                ref="tooltipArea"
+                class="ml-2 text-white bg-gray-400 hover:bg-gray-500 rounded-full w-5 h-5 flex items-center justify-center cursor-pointer text-xs"
+              >?</span>
+            </span>
+          </div>
+          
+          <!-- Representación gráfica del área de paneles -->
+          <div class="mt-3 p-3 bg-blue-50 rounded-lg">
+            <h4 class="text-sm font-medium text-gray-700 mb-2">Visualización del área requerida:</h4>
+            <div class="relative w-full h-48 rounded-md overflow-hidden">
+              <!-- Representación de los paneles -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div v-if="areaPaneles > 0" 
+                     :style="{
+                       width: '100%',
+                       height: '100%',
+                       backgroundColor: panelColor,
+                       transition: 'all 0.5s ease'
+                     }"
+                     class="relative flex items-center justify-center">
+                  <div class="absolute inset-0 grid" 
+                       :style="{
+                         gridTemplateColumns: `repeat(${calcularColumnasOptimas(panelesSolaresRequeridos)}, 1fr)`,
+                         gridTemplateRows: `repeat(${calcularFilasOptimas(panelesSolaresRequeridos)}, 1fr)`,
+                         gap: '2px',
+                         padding: '2px'
+                       }">
+                    <div v-for="n in panelesSolaresRequeridos" :key="n" 
+                         class="bg-white opacity-20 border border-blue-300 relative">
+                    </div>
+                    
+                    <!-- Sistema de acotación para las dimensiones -->
+                    <div v-if="panelesSolaresRequeridos > 0" class="absolute inset-0 z-30 pointer-events-none">
+                      <!-- Acotación horizontal (ancho) - en la parte superior -->
+                      <div class="absolute top-0 left-0 right-0 flex items-start">
+                        <div class="w-full flex items-center">
+                          <!-- Línea de acotación horizontal -->
+                          <div class="h-[1px] bg-white w-full relative">
+                            <!-- Líneas verticales en los extremos -->
+                            <div class="absolute left-0 h-2 w-[1px] bg-white"></div>
+                            <div class="absolute right-0 h-2 w-[1px] bg-white"></div>
+                            <!-- Texto de medida - ANCHO TOTAL (columnas * ancho de panel) -->
+                            <div class="absolute top-2 left-1/2 transform -translate-x-1/2 text-white text-xs font-bold whitespace-nowrap">
+                              {{ (dimensionesPaneles[tipoPanel]?.alto * calcularColumnasOptimas(panelesSolaresRequeridos)).toFixed(1) }}m
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Acotación vertical (alto) - en el lateral izquierdo -->
+                      <div class="absolute top-0 bottom-0 left-0 flex items-start h-full">
+                        <div class="h-full flex flex-col items-center">
+                          <!-- Línea de acotación vertical -->
+                          <div class="w-[1px] bg-white h-full relative">
+                            <!-- Líneas horizontales en los extremos -->
+                            <div class="absolute top-0 w-2 h-[1px] bg-white"></div>
+                            <div class="absolute bottom-0 w-2 h-[1px] bg-white"></div>
+                            <!-- Texto de medida - ALTO TOTAL (filas * alto de panel) -->
+                            <div class="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-xs font-bold whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                              {{ (dimensionesPaneles[tipoPanel]?.ancho * calcularFilasOptimas(panelesSolaresRequeridos)).toFixed(1) }}m
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Dimensión del panel individual (solo en el primer panel) -->
+                      <div class="absolute top-0 left-0 text-white text-xs font-bold p-1">
+                        {{ dimensionesPaneles[tipoPanel]?.ancho.toFixed(1) }}m × {{ dimensionesPaneles[tipoPanel]?.alto.toFixed(1) }}m
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-white text-center font-bold text-sm z-10 p-2">
+                    <div class="flex items-center justify-center">
+                      {{ areaPaneles.toFixed(1) }} m²
+                    </div>
+                    <div>{{ panelesSolaresRequeridos }} paneles</div>
+                  </div>
+                </div>
+                <div v-else class="text-gray-400 text-center">
+                  Seleccione especificaciones del panel para visualizar el área
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -217,6 +325,12 @@ export default {
         "5": 1225.8, // Tarifa aproximada estrato 5
         "6": 1470.9, // Tarifa aproximada estrato 6 (20% más que estrato 5)
       },
+      // Colores para los diferentes tipos de paneles
+      coloresPaneles: {
+        monocristalino: "#1a365d", // Azul oscuro
+        polycristalino: "#2563eb", // Azul medio
+        peliculaDelgada: "#60a5fa"  // Azul claro
+      },
       // Dimensiones típicas de paneles solares según tipo (en metros)
       dimensionesPaneles: {
         monocristalino: { ancho: 1.0, alto: 1.7 }, // Típicamente más eficientes, menor área
@@ -243,10 +357,79 @@ export default {
           arrow: true,
         });
       }
+      
+      if (this.$refs.tooltipArea) {
+        // Obtener dimensiones del panel
+        const dimensiones = this.dimensionesPaneles[this.tipoPanel];
+        if (!dimensiones) return;
+        
+        // Calcular área por panel
+        const areaPorPanel = dimensiones.ancho * dimensiones.alto;
+        
+        // Obtener eficiencia usada
+        const eficienciasTipicas = {
+          monocristalino: 20,
+          polycristalino: 16,
+          peliculaDelgada: 11
+        };
+        let eficienciaUsada = this.eficienciaPanel;
+        const eficienciaTipica = eficienciasTipicas[this.tipoPanel] || 15;
+        if (eficienciaUsada < 5 || eficienciaUsada > 25) {
+          eficienciaUsada = eficienciaTipica;
+        }
+        
+        // Calcular área necesaria por panel
+        const areaNecesaria = this.solarPanelOutput / (1000 * (eficienciaUsada/100));
+        
+        // Factor de ajuste
+        let factorAjuste = 1.1;
+        if (this.tipoPanel === 'peliculaDelgada') {
+          factorAjuste = 1.2;
+        }
+        
+        // Área total
+        const areaTotal = this.panelesSolaresRequeridos * areaNecesaria * factorAjuste;
+        
+        // Crear contenido del tooltip con la fórmula explicada
+        const tooltipContent = `
+          <div style="text-align: left; font-size: 13px;">
+            <p><strong>Fórmula:</strong> Área total = Número de paneles × Área por panel × Factor de ajuste</p>
+            <p>Donde:</p>
+            <p>- Área por panel = ${areaPorPanel.toFixed(2)} m² (${dimensiones.ancho.toFixed(1)}m × ${dimensiones.alto.toFixed(1)}m)</p>
+            <p>- Factor de ajuste = ${factorAjuste.toFixed(1)} (espacio adicional para instalación)</p>
+            <p>Resultado: ${this.panelesSolaresRequeridos} × ${areaPorPanel.toFixed(2)} × ${factorAjuste.toFixed(1)} = ${areaTotal.toFixed(1)} m²</p>
+          </div>
+        `;
+        
+        tippy(this.$refs.tooltipArea, {
+          content: tooltipContent,
+          placement: "top",
+          arrow: true,
+          allowHTML: true,
+          interactive: true,
+          maxWidth: 350
+        });
+      }
     },
     updateChartKey() {
       this.chartKey += 1;
       this.lineChartKey += 1;
+    },
+    calcularColumnasOptimas(paneles) {
+      // Calcular el número óptimo de columnas basado en la raíz cuadrada
+      // y ajustando para una mejor distribución visual
+      if (paneles <= 2) return paneles;
+      if (paneles <= 4) return 2;
+      if (paneles <= 6) return 3;
+      if (paneles <= 9) return 3;
+      if (paneles <= 12) return 4;
+      if (paneles <= 16) return 4;
+      return Math.ceil(Math.sqrt(paneles));
+    },
+    calcularFilasOptimas(paneles) {
+      // Calcular el número de filas necesarias basado en el número de columnas
+      const columnas = this.calcularColumnasOptimas(paneles);
+      return Math.ceil(paneles / columnas);
     },
   },
   watch: {
@@ -268,6 +451,9 @@ export default {
         peliculaDelgada: "Película delgada",
       };
       return types[this.tipoPanel];
+    },
+    panelColor() {
+      return this.coloresPaneles[this.tipoPanel] || "#3b82f6"; // Color por defecto si no hay tipo seleccionado
     },
     consumoDiarioPromedio() {
       return this.consumoMensualTotal / 30;
